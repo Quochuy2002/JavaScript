@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiểm tra Regex</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        validateForm();
+      });
+    });
+
+    function validateForm() {
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+      if (!emailRegex.test(email)) {
+        alert('Địa chỉ email không hợp lệ.');
+      } else if (!passwordRegex.test(password)) {
+        alert('Mật khẩu không hợp lệ. Phải có ít nhất 8 ký tự, bao gồm ít nhất một chữ hoa, một chữ thường và một số.');
+      } else {
+        alert('Đăng nhập thành công!');
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <h2>Đăng nhập</h2>
+
+  <form id="loginForm">
+    <label for="email">Email:</label>
+    <input style="margin:0 20px 20px 0" type="email" id="email" name="email" required></br>
+
+    <label for="password">Mật khẩu:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit">Đăng nhập</button>
+  </form>
+
+</body>
+</html>
